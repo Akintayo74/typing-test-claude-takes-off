@@ -1,10 +1,9 @@
-# Typing Speed Test App - Project Requirements & Preferences
+# Typing Speed Test App - Project Specifications
 
 ## Project Overview
-A typing speed test application built for a hackathon. Primary goal is to learn AI-assisted development workflows with Claude Code.
+A typing speed test application built for a hackathon.
 
-**Developer:** Akintayo (early intermediate frontend developer)
-**Design Assets:** Figma files available (MCP integration to be set up later)
+**Design Assets:** Figma file available via MCP integration
 
 ---
 
@@ -22,7 +21,6 @@ A typing speed test application built for a hackathon. Primary goal is to learn 
   - `postcss-nesting` - For nested selectors
   - `postcss-custom-media` - For responsive breakpoints
 - **Approach:** Mobile-first responsive design
-- **Philosophy:** Prefer plain CSS abstractions over utility-first approaches
 
 ---
 
@@ -127,6 +125,38 @@ function Component() {
 
 ## Styling Conventions
 
+### CSS Custom Properties (Design Tokens)
+**Always use CSS variables for colors, spacing, typography, and other design values.**
+
+All design tokens are defined in `src/index.css` as CSS custom properties based on:
+- Figma design variables
+- `style-guide.md` specifications
+
+**Examples:**
+```css
+/* ✅ Correct - Use CSS variables */
+.button {
+  background-color: var(--color-blue-400);
+  padding: var(--spacing-200) var(--spacing-300);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-md);
+}
+
+/* ❌ Avoid - Hard-coded values */
+.button {
+  background-color: #4ca6ff;
+  padding: 16px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+```
+
+**Available token categories:**
+- `--color-*`: Colors from style guide (neutral, blue, red, green, yellow)
+- `--spacing-*`: Spacing scale (100-600 based on 8px grid)
+- `--font-*`: Typography tokens (family, size, weight, line-height, letter-spacing)
+- `--radius-*`: Border radius values
+
 ### Mobile-First Approach
 Write base styles for mobile, then progressively enhance for larger screens using min-width media queries.
 
@@ -178,13 +208,6 @@ Write base styles for mobile, then progressively enhance for larger screens usin
 - Use PostCSS nesting for better DX
 - Avoid inline styles unless absolutely necessary
 
-### CSS Module Template
-```css
-@import '../../styles/media.css';
-
-/* Component styles here */
-```
-
 ---
 
 ## Development Workflow
@@ -197,28 +220,5 @@ Write base styles for mobile, then progressively enhance for larger screens usin
 
 ---
 
-## AI Collaboration Preferences
-
-### Communication Style
-- **Conversational and educational** - Explain decisions and trade-offs
-- **No rigid frameworks** - Prefer hybrid conversational approach
-- **Ask when uncertain** - Better to clarify than assume
-
-### Code Quality
-- Write clean, readable code (early intermediate level)
-- Avoid over-engineering
-- Explain complex patterns
-- Focus on learning and understanding, not just getting it done
-
----
-
 ## Future Enhancements
-- [ ] Figma MCP server integration for design file access
 - [ ] Bundle path aliases configuration (`@/components`, `@/hooks`, etc.)
-
----
-
-## Notes
-- First time using Claude Code - prioritize learning the workflow
-- May or may not submit to hackathon - focus is on building with AI effectively
-- Reference this doc to maintain consistency across the project

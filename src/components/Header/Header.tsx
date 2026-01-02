@@ -1,6 +1,5 @@
-import * as React from 'react';
 import styles from './Header.module.css';
-import logoIcon from '../../assets/images/logo-large.svg';
+import logoIcon from '../../assets/images/logo-small.svg';
 import trophyIcon from '../../assets/images/icon-personal-best.svg';
 
 interface HeaderProps {
@@ -30,7 +29,8 @@ function Header({ personalBest }: HeaderProps) {
             className={styles.trophyIcon}
           />
           <p className={styles.personalBestText}>
-            <span className={styles.label}>Personal best: </span>
+            <span className={styles.labelMobile}>Best: </span>
+            <span className={styles.labelTablet}>Personal best: </span>
             <span className={styles.value}>{personalBest} WPM</span>
           </p>
         </div>
