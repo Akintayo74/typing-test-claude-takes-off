@@ -1,10 +1,13 @@
 import * as React from 'react';
+import Header from './components/Header';
 
 function App() {
+  // TODO: Replace with actual personal best from localStorage
+  const personalBest = 92;
+
   return (
     <div>
-      <h1>Typing Speed Test</h1>
-      <p>Ready to build your typing test app!</p>
+      <Header personalBest={personalBest} />
     </div>
   );
 }

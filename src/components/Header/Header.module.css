@@ -1,0 +1,112 @@
+@import '../../styles/media.css';
+
+/* Header container */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  gap: 16px;
+}
+
+/* Logo section */
+.logo {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  color: #949497;
+}
+
+/* Personal best section */
+.personalBest {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trophyIcon {
+  width: 20.25px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.personalBestText {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.label {
+  color: #949497;
+}
+
+.value {
+  color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (--tablet) {
+  .header {
+    padding: 24px 32px;
+  }
+}
+
+@media (--laptop) {
+  .header {
+    padding: 32px 48px;
+  }
+}
+
+@media (--desktop) {
+  .header {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px 80px;
+  }
+}
+
+/* Mobile adjustments - hide personal best text on very small screens */
+@media (max-width: 549px) {
+  .personalBestText {
+    font-size: 14px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+}
