@@ -1,0 +1,8 @@
+/**
+ * Custom Media Queries
+ * Mobile-first breakpoints for responsive design
+ */
+
+@custom-media --tablet (min-width: 550px);
+@custom-media --laptop (min-width: 1100px);
+@custom-media --desktop (min-width: 1500px);
