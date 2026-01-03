@@ -1,27 +1,16 @@
 @import '../../styles/media.css';
 
-.container {
-  width: 100%;
-}
-
-/* Desktop view - horizontal layout with inline buttons */
-.settingsRow {
+/* Desktop view - inline buttons */
+.desktopSelector {
   display: none;
 }
 
 @media (--tablet) {
-  .settingsRow {
+  .desktopSelector {
     display: flex;
-    gap: var(--spacing-200);
+    gap: 6px;
     align-items: center;
-    flex-wrap: wrap;
   }
-}
-
-.settingGroup {
-  display: flex;
-  gap: 6px;
-  align-items: center;
 }
 
 .label {
@@ -64,29 +53,20 @@
   color: var(--color-blue-400);
 }
 
-.divider {
-  width: 1px;
-  align-self: stretch;
-  background-color: #3a3a3a;
-  border-radius: 2px;
-}
-
-/* Mobile view - dropdowns */
-.mobileSettings {
-  display: flex;
-  gap: var(--spacing-125);
-  width: 100%;
+/* Mobile view - dropdown */
+.mobileSelector {
+  display: block;
+  flex: 1;
 }
 
 @media (--tablet) {
-  .mobileSettings {
+  .mobileSelector {
     display: none;
   }
 }
 
 .dropdownContainer {
   position: relative;
-  flex: 1;
 }
 
 .dropdownButton {

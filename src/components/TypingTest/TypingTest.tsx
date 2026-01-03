@@ -2,12 +2,9 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TypingTest.module.css';
 import Stats from '../Stats';
-import Settings from '../Settings';
 import TextDisplay from '../TextDisplay';
 import passageData from '../../../data.json';
-
-type Difficulty = 'easy' | 'medium' | 'hard';
-type Mode = 'timed' | 'passage';
+import type { Difficulty, Mode } from '../Settings/settings.helpers';
 type TestStatus = 'idle' | 'running' | 'finished';
 
 interface CharacterStatus {
@@ -179,21 +176,15 @@ function TypingTest() {
 
   return (
     <div className={styles.container}>
-      {/* Stats Container - combines stats and settings in one row on desktop */}
-      <div className={styles.statsContainer}>
-        <Stats
-          wpm={wpm}
-          accuracy={accuracy}
-          time={formattedTime}
-        />
-
-        <Settings
-          difficulty={difficulty}
-          mode={mode}
-          onDifficultyChange={setDifficulty}
-          onModeChange={setMode}
-        />
-      </div>
+      <Stats
+        wpm={wpm}
+        accuracy={accuracy}
+        time={formattedTime}
+        difficulty={difficulty}
+        mode={mode}
+        onDifficultyChange={setDifficulty}
+        onModeChange={setMode}
+      />
 
       <TextDisplay
         characterStatuses={characterStatuses}

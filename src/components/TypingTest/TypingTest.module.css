@@ -20,25 +20,6 @@
   }
 }
 
-.statsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  border-bottom: 1px solid #3a3a3a;
-  padding-bottom: var(--spacing-200);
-}
-
-@media (--tablet) {
-  .statsContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--spacing-200);
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
 .hiddenInput {
   position: absolute;
   opacity: 0;

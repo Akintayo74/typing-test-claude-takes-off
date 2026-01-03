@@ -12,7 +12,7 @@ function App() {
       <Header personalBest={personalBest} />
       <Routes>
         <Route path="/" element={<TypingTest />} />
-        <Route path="/results" element={<Results personalBest={personalBest} />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </div>
   );

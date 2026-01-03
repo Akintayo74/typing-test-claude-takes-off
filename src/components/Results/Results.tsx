@@ -6,10 +6,6 @@ import iconRestart from '../../assets/images/icon-restart.svg';
 import patternStar1 from '../../assets/images/pattern-star-1.svg';
 import patternStar2 from '../../assets/images/pattern-star-2.svg';
 
-interface ResultsProps {
-  personalBest: number;
-}
-
 interface LocationState {
   wpm: number;
   accuracy: number;
@@ -18,7 +14,7 @@ interface LocationState {
   timeElapsed: number;
 }
 
-function Results({ personalBest }: ResultsProps) {
+function Results() {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as LocationState | null;

@@ -1,13 +1,27 @@
-import * as React from 'react';
 import styles from './Stats.module.css';
+import DifficultySelector from '../DifficultySelector';
+import ModeSelector from '../ModeSelector';
+import type { Difficulty, Mode } from '../Settings/settings.helpers';
 
 interface StatsProps {
   wpm: number;
   accuracy: number;
   time: string;
+  difficulty: Difficulty;
+  mode: Mode;
+  onDifficultyChange: (difficulty: Difficulty) => void;
+  onModeChange: (mode: Mode) => void;
 }
 
-function Stats({ wpm, accuracy, time }: StatsProps) {
+function Stats({
+  wpm,
+  accuracy,
+  time,
+  difficulty,
+  mode,
+  onDifficultyChange,
+  onModeChange,
+}: StatsProps) {
   // Determine accuracy color based on value
   const getAccuracyColor = () => {
     if (accuracy >= 95) return 'var(--color-green-500)';
@@ -17,6 +31,7 @@ function Stats({ wpm, accuracy, time }: StatsProps) {
 
   return (
     <div className={styles.container}>
+      {/* Stats section */}
       <div className={styles.statsRow}>
         <div className={styles.stat}>
           <span className={styles.label}>WPM:</span>
@@ -50,6 +65,25 @@ function Stats({ wpm, accuracy, time }: StatsProps) {
             {time}
           </span>
         </div>
+      </div>
+
+      {/* Settings section - desktop */}
+      <div className={styles.settingsRow}>
+        <DifficultySelector
+          difficulty={difficulty}
+          onDifficultyChange={onDifficultyChange}
+        />
+        <div className={styles.settingsDivider} />
+        <ModeSelector mode={mode} onModeChange={onModeChange} />
+      </div>
+
+      {/* Settings section - mobile dropdowns */}
+      <div className={styles.mobileSettings}>
+        <DifficultySelector
+          difficulty={difficulty}
+          onDifficultyChange={onDifficultyChange}
+        />
+        <ModeSelector mode={mode} onModeChange={onModeChange} />
       </div>
     </div>
   );
