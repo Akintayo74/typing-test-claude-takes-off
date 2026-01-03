@@ -1,0 +1,59 @@
+@import '../../styles/media.css';
+
+.container {
+  width: 100%;
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.textBox {
+  width: 100%;
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.36;
+  letter-spacing: 0.4px;
+  word-wrap: break-word;
+  cursor: text;
+}
+
+
+@media (--laptop) {
+  .textBox {
+    font-size: 40px;
+  }
+}
+
+.character {
+  position: relative;
+  display: inline;
+}
+
+/* Character states */
+.untyped {
+  color: var(--color-neutral-400);
+}
+
+.correct {
+  color: var(--color-green-500);
+}
+
+.incorrect {
+  color: var(--color-red-500);
+}
+
+/* Cursor highlight */
+.current {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 2px 0;
+}
+
+/* Error underline */
+.error {
+  text-decoration: underline;
+  text-decoration-color: var(--color-red-500);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
