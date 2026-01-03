@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './TypingTest.module.css';
 import Stats from '../Stats';
 import TextDisplay from '../TextDisplay';
+import StartOverlay from '../StartOverlay';
 import passageData from '../../../data.json';
 import type { Difficulty, Mode } from '../Settings/settings.helpers';
 type TestStatus = 'idle' | 'running' | 'finished';
@@ -19,6 +20,9 @@ function TypingTest() {
   // Settings state
   const [difficulty, setDifficulty] = React.useState<Difficulty>('hard');
   const [mode, setMode] = React.useState<Mode>('timed');
+
+  // Start page state - controls initial blur/overlay
+  const [hasStarted, setHasStarted] = React.useState(false);
 
   // Test status lifecycle
   const [status, setStatus] = React.useState<TestStatus>('idle');
@@ -125,8 +129,8 @@ function TypingTest() {
 
     setUserInput(newInput);
 
-    // Complete for passage mode when user finishes typing the passage
-    if (mode === 'passage' && newInput.length === passage.length) {
+    // Complete when user finishes typing the passage (both modes)
+    if (newInput.length === passage.length) {
       setStatus('finished');
     }
   };
@@ -162,15 +166,31 @@ function TypingTest() {
     return Math.round((correctChars / userInput.length) * 100);
   }, [userInput, passage]);
 
-  // Format time as M:SS
+  // Format time as M:SS (countdown for timed mode, count up for passage mode)
   const formattedTime = React.useMemo(() => {
+    if (mode === 'timed') {
+      const remaining = Math.max(0, 60 - timeElapsed);
+      const minutes = Math.floor(remaining / 60);
+      const seconds = remaining % 60;
+      return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
     const minutes = Math.floor(timeElapsed / 60);
     const seconds = timeElapsed % 60;
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }, [timeElapsed]);
+  }, [timeElapsed, mode]);
+
+  // Handle starting the test (from overlay or text click)
+  const handleStart = () => {
+    setHasStarted(true);
+    inputRef.current?.focus();
+  };
 
   // Focus input when clicking on text display
   const handleTextDisplayClick = () => {
+    if (!hasStarted) {
+      handleStart();
+      return;
+    }
     inputRef.current?.focus();
   };
 
@@ -186,11 +206,15 @@ function TypingTest() {
         onModeChange={setMode}
       />
 
-      <TextDisplay
-        characterStatuses={characterStatuses}
-        currentIndex={userInput.length}
-        onClick={handleTextDisplayClick}
-      />
+      <div className={styles.textContainer}>
+        <TextDisplay
+          characterStatuses={characterStatuses}
+          currentIndex={userInput.length}
+          onClick={handleTextDisplayClick}
+          blurred={!hasStarted}
+        />
+        {!hasStarted && <StartOverlay onStart={handleStart} />}
+      </div>
 
       {/* Hidden input to capture keyboard events */}
       <input

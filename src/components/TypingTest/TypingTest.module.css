@@ -20,6 +20,13 @@
   }
 }
 
+.textContainer {
+  position: relative;
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .hiddenInput {
   position: absolute;
   opacity: 0;

@@ -10,12 +10,13 @@ interface TextDisplayProps {
   characterStatuses: CharacterStatus[];
   currentIndex: number;
   onClick?: () => void;
+  blurred?: boolean;
 }
 
-function TextDisplay({ characterStatuses, currentIndex, onClick }: TextDisplayProps) {
+function TextDisplay({ characterStatuses, currentIndex, onClick, blurred = false }: TextDisplayProps) {
   return (
     <div className={styles.container} onClick={onClick}>
-      <div className={styles.textBox}>
+      <div className={`${styles.textBox} ${blurred ? styles.blurred : ''}`}>
         {characterStatuses.map((charStatus, index) => {
           const isCurrent = index === currentIndex;
           const showUnderline = charStatus.wasError;

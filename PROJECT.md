@@ -55,6 +55,48 @@ src/
 
 ---
 
+## Component Spectrum
+
+Components exist on a spectrum from **primitive** to **page-level**, each with different responsibilities:
+
+```
+Primitive ←————————————————————————————→ Page-level
+(Low-level UI)                          (Layout & Composition)
+```
+
+### The Three Layers
+
+| Layer | Responsibility | Example |
+|-------|---------------|---------|
+| **Primitives** | Pure UI, no layout opinions. Handles interaction logic (clicks, state) but not *where* it appears. | `DifficultySelector`, `ModeSelector`, `Button` |
+| **Helpers** | Extracted logic, types, constants. Shared across components. | `settings.helpers.ts` with types and utilities |
+| **Composites** | Layout and composition. Arranges primitives, handles spacing and positioning. | `Stats` (navbar that composes selectors + stats display) |
+
+### Why This Matters
+
+1. **Reusability** - Primitives can be used anywhere without bringing layout baggage
+2. **Separation of concerns** - UI logic stays separate from page layout decisions
+3. **Easier debugging** - When layout breaks, you know to look at the composite, not the primitive
+4. **Flexibility** - Same primitive can appear in different layouts (e.g., settings in a navbar vs. a modal)
+
+### Practical Example
+
+```
+Stats (composite - handles layout)
+├── statsRow (WPM, Accuracy, Time)
+├── DifficultySelector (primitive - just buttons/dropdown)
+└── ModeSelector (primitive - just buttons/dropdown)
+
+settings.helpers.ts (shared logic)
+├── types: Difficulty, Mode
+├── constants: difficultyOptions, modeOptions
+└── utilities: capitalizeFirst(), getModeLabel()
+```
+
+The composite (`Stats`) uses `display: flex` + `justify-content: space-between` to position things. The primitives don't know or care about their position - they just render their UI.
+
+---
+
 ## Component Scaffolding
 
 ### Using new-component
