@@ -245,7 +245,15 @@
   opacity: 0.9;
 }
 
+.goAgainButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-neutral-900), 0 0 0 5px var(--color-blue-400);
+}
+
 .restartIcon {
   width: 20px;
   height: 20px;
+  filter: invert(1);
+  /* display: flex;
+  align-items: center; */
 }

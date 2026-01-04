@@ -24,11 +24,17 @@
   border: none;
   border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .button:hover {
   background-color: var(--color-blue-400);
+}
+
+.button:focus-visible {
+  outline: none;
+  background-color: var(--color-blue-600);
+  box-shadow: 0 0 0 3px var(--color-neutral-900), 0 0 0 5px var(--color-blue-400);
 }
 
 .helperText {

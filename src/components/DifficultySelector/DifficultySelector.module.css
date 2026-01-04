@@ -46,6 +46,14 @@
 
 .button:hover {
   border-color: var(--color-blue-400);
+  color: var(--color-blue-400);
+}
+
+.button:focus-visible {
+  outline: none;
+  border-color: var(--color-neutral-0);
+  color: var(--color-neutral-0);
+  box-shadow: 0 0 0 2px var(--color-neutral-900), 0 0 0 4px var(--color-blue-400);
 }
 
 .button.active {
