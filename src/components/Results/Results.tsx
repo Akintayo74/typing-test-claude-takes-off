@@ -1,29 +1,36 @@
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Results.module.css';
-import iconCompleted from '../../assets/images/icon-completed.svg';
 import iconRestart from '../../assets/images/icon-restart.svg';
 import patternStar1 from '../../assets/images/pattern-star-1.svg';
 import patternStar2 from '../../assets/images/pattern-star-2.svg';
-
-interface LocationState {
-  wpm: number;
-  accuracy: number;
-  correctChars: number;
-  incorrectChars: number;
-  timeElapsed: number;
-}
+import {
+  VARIANT_CONTENT,
+  getAccuracyColor,
+  determineVariantAndUpdateBest,
+} from './results.helpers';
+import type { LocationState, ResultVariant } from './results.helpers';
 
 function Results() {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as LocationState | null;
+  const [variant, setVariant] = React.useState<ResultVariant>('standard');
+  const hasProcessed = React.useRef(false);
 
-  // If no state, redirect to home (handles direct navigation to /results)
+  // Determine variant and update localStorage on mount
   React.useEffect(() => {
     if (!state) {
       navigate('/', { replace: true });
+      return;
     }
+
+    // Prevent double-processing in React Strict Mode
+    if (hasProcessed.current) return;
+    hasProcessed.current = true;
+
+    const determinedVariant = determineVariantAndUpdateBest(state.wpm, state.accuracy);
+    setVariant(determinedVariant);
   }, [state, navigate]);
 
   if (!state) {
@@ -31,16 +38,10 @@ function Results() {
   }
 
   const { wpm, accuracy, correctChars, incorrectChars } = state;
+  const content = VARIANT_CONTENT[variant];
 
   const handleGoAgain = () => {
     navigate('/', { replace: true });
-  };
-
-  // Determine accuracy color based on value
-  const getAccuracyColor = () => {
-    if (accuracy >= 95) return 'var(--color-green-500)';
-    if (accuracy >= 85) return 'var(--color-yellow-400)';
-    return 'var(--color-red-500)';
   };
 
   return (
@@ -60,17 +61,19 @@ function Results() {
       />
 
       <div className={styles.content}>
-        {/* Check circle icon */}
+        {/* Result icon */}
         <div className={styles.iconContainer}>
-          <img src={iconCompleted} alt="" className={styles.completedIcon} />
+          <img
+            src={content.icon}
+            alt=""
+            className={variant === 'celebration' ? styles.celebrationIcon : styles.completedIcon}
+          />
         </div>
 
         {/* Message */}
         <div className={styles.messageContainer}>
-          <h1 className={styles.title}>Test Complete!</h1>
-          <p className={styles.subtitle}>
-            Solid run. Keep pushing to beat your high score.
-          </p>
+          <h1 className={styles.title}>{content.title}</h1>
+          <p className={styles.subtitle}>{content.subtitle}</p>
         </div>
 
         {/* Stats row */}
@@ -84,7 +87,7 @@ function Results() {
             <span className={styles.statLabel}>Accuracy:</span>
             <span
               className={styles.statValue}
-              style={{ color: getAccuracyColor() }}
+              style={{ color: getAccuracyColor(accuracy) }}
             >
               {accuracy}%
             </span>
@@ -100,9 +103,9 @@ function Results() {
           </div>
         </div>
 
-        {/* Go Again button */}
+        {/* Action button */}
         <button className={styles.goAgainButton} onClick={handleGoAgain}>
-          Go Again
+          {content.buttonText}
           <img src={iconRestart} alt="" className={styles.restartIcon} />
         </button>
       </div>
