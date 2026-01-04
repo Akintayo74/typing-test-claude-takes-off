@@ -53,13 +53,15 @@ function TypingTest() {
         spellCheck="false"
       />
 
-      {/* Footer with restart button */}
-      <footer className={styles.footer}>
-        <button className={styles.restartButton} onClick={actions.restart}>
-          Restart Test
-          <img src={iconRestart} alt="" className={styles.restartIcon} />
-        </button>
-      </footer>
+      {/* Footer with restart button - only shown after test starts */}
+      {hasStarted && (
+        <footer className={styles.footer}>
+          <button className={styles.restartButton} onClick={actions.restart}>
+            Restart Test
+            <img src={iconRestart} alt="" className={styles.restartIcon} />
+          </button>
+        </footer>
+      )}
     </div>
   );
 }

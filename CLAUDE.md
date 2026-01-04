@@ -56,3 +56,8 @@ When implementing designs from Figma:
 - "Add restart button to TypingTest footer" ✓
 - "Refactor Results page - extract helpers and constants" ✓
 - "Add restart button AND refactor Results page" ✗ (two separate changes)
+
+### Before committing:
+- **Always ask first** - Let the user test the implementation before committing
+- Say something like: "Ready to test? Let me know when you'd like me to commit"
+- If the user finds issues, fix them first → one clean commit instead of multiple fix-up commits
