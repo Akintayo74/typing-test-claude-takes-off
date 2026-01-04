@@ -36,3 +36,23 @@ When implementing designs from Figma:
 ## Project Context
 - First time using Claude Code - prioritize learning the workflow
 - Reference `PROJECT.md` for tech stack, architecture, and coding conventions
+
+## Git Commit Guidelines
+**Make commits after completing each logical unit of work.** Don't batch unrelated changes.
+
+### When to commit:
+- After completing a feature or task from the user's instructions
+- After fixing a bug
+- After refactoring (separate from feature work)
+- After adding/updating tests
+- Before starting a different type of work
+
+### Commit frequency principles:
+- **One logical change per commit** - If you can describe it with "and", it might be two commits
+- **Working state** - Each commit should leave the codebase in a working state (passes lint/type checks)
+- **Atomic changes** - A commit should be revertable without breaking unrelated features
+
+### Example good commit points:
+- "Add restart button to TypingTest footer" ✓
+- "Refactor Results page - extract helpers and constants" ✓
+- "Add restart button AND refactor Results page" ✗ (two separate changes)

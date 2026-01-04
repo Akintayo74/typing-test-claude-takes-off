@@ -1,4 +1,4 @@
-import type { Mode } from '../Settings/settings.helpers';
+import type { Mode } from '../components/Settings/settings.helpers';
 
 // Types
 export type TestStatus = 'idle' | 'running' | 'finished';
