@@ -27,6 +27,39 @@ Examples of when to speak up:
 - Explain complex patterns when introducing them
 - Focus on learning and understanding, not just getting it done
 
+## Package Manager
+- **Always use bun** - Prefer `bun` over `npm`, `yarn`, or `pnpm` for all package management, bundling, and JavaScript runtime tasks
+- Examples: `bun install`, `bun run build`, `bun run dev`, `bun test`
+
+## CSS Style Preferences
+- **Nested media queries** - Always use nested `@media` syntax inside selectors instead of separate blocks
+- **Blank line before media queries** - Add a blank line between the last CSS property and the `@media` rule
+
+```css
+/* Preferred - nested with blank line */
+.statsRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+
+  @media (--tablet) {
+    flex-direction: row;
+  }
+}
+
+/* Avoid - separate media query blocks */
+.statsRow {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (--tablet) {
+  .statsRow {
+    flex-direction: row;
+  }
+}
+```
+
 ## Figma Workflow
 When implementing designs from Figma:
 1. Request complete frames (not individual elements) for full context

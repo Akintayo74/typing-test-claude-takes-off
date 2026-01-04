@@ -25,6 +25,10 @@
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: background-color 0.15s ease, box-shadow 0.15s ease;
+
+  @media (--laptop) {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .button:hover {
@@ -45,14 +49,8 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-neutral-0);
   text-align: center;
-}
 
-@media (--laptop) {
-  .button {
-    font-size: var(--font-size-xl);
-  }
-
-  .helperText {
+  @media (--laptop) {
     font-size: var(--font-size-xl);
   }
 }

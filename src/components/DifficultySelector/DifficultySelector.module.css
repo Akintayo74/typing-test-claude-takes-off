@@ -3,10 +3,8 @@
 /* Desktop view - inline buttons */
 .desktopSelector {
   display: none;
-}
 
-@media (--tablet) {
-  .desktopSelector {
+  @media (--tablet) {
     display: flex;
     gap: 6px;
     align-items: center;
@@ -65,10 +63,8 @@
 .mobileSelector {
   display: block;
   flex: 1;
-}
 
-@media (--tablet) {
-  .mobileSelector {
+  @media (--tablet) {
     display: none;
   }
 }

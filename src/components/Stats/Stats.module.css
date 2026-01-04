@@ -7,10 +7,8 @@
   width: 100%;
   border-bottom: 1px solid #3a3a3a;
   padding-bottom: var(--spacing-200);
-}
 
-@media (--laptop) {
-  .container {
+  @media (--laptop) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -23,10 +21,8 @@
   gap: 20px;
   align-items: center;
   width: 100%;
-}
 
-@media (--tablet) {
-  .statsRow {
+  @media (--tablet) {
     gap: var(--spacing-300);
     width: auto;
   }
@@ -39,17 +35,14 @@
   text-align: center;
   flex: 1 0 0;
   min-width: 0;
-}
 
-@media (--tablet) {
-  .stat {
+  @media (--tablet) {
     flex-direction: row;
     gap: var(--spacing-150);
     text-align: left;
     flex: 0 0 auto;
   }
 }
-
 
 .label {
   font-family: var(--font-primary);
@@ -58,10 +51,8 @@
   line-height: var(--line-height-tight);
   letter-spacing: -0.48px;
   color: var(--color-neutral-400);
-}
 
-@media (--tablet) {
-  .label {
+  @media (--tablet) {
     font-size: var(--font-size-xl);
     letter-spacing: var(--letter-spacing-tight);
   }
@@ -77,10 +68,8 @@
 
 .dividerWrapper {
   display: none;
-}
 
-@media (--tablet) {
-  .dividerWrapper {
+  @media (--tablet) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -97,10 +86,8 @@
 /* Settings section - desktop */
 .settingsRow {
   display: none;
-}
 
-@media (--tablet) {
-  .settingsRow {
+  @media (--tablet) {
     display: flex;
     gap: var(--spacing-200);
     align-items: center;
@@ -119,10 +106,8 @@
   display: flex;
   gap: var(--spacing-125);
   width: 100%;
-}
 
-@media (--tablet) {
-  .mobileSettings {
+  @media (--tablet) {
     display: none;
   }
 }

@@ -9,10 +9,8 @@
   align-items: center;
   padding: var(--spacing-200);
   overflow: hidden;
-}
 
-@media (--tablet) {
-  .container {
+  @media (--tablet) {
     padding: var(--spacing-400);
   }
 }
@@ -24,19 +22,15 @@
   left: 18px;
   width: 21px;
   height: 21px;
-}
 
-@media (--tablet) {
-  .starTopLeft {
+  @media (--tablet) {
     left: 48px;
     top: 60px;
     width: 32px;
     height: 32px;
   }
-}
 
-@media (--laptop) {
-  .starTopLeft {
+  @media (--laptop) {
     left: 109px;
     top: 120px;
   }
@@ -48,19 +42,15 @@
   right: 20px;
   width: 39px;
   height: 39px;
-}
 
-@media (--tablet) {
-  .starBottomRight {
+  @media (--tablet) {
     right: 48px;
     bottom: 80px;
     width: 74px;
     height: 74px;
   }
-}
 
-@media (--laptop) {
-  .starBottomRight {
+  @media (--laptop) {
     right: 180px;
     bottom: 100px;
   }
@@ -74,10 +64,8 @@
   padding-top: var(--spacing-200);
   width: 100%;
   max-width: 600px;
-}
 
-@media (--tablet) {
-  .content {
+  @media (--tablet) {
     gap: var(--spacing-400);
     padding-top: var(--spacing-300);
   }
@@ -87,10 +75,8 @@
 .iconContainer {
   width: 48px;
   height: 48px;
-}
 
-@media (--tablet) {
-  .iconContainer {
+  @media (--tablet) {
     width: 64px;
     height: 64px;
   }
@@ -113,10 +99,8 @@
   gap: var(--spacing-125);
   text-align: center;
   padding-top: var(--spacing-200);
-}
 
-@media (--tablet) {
-  .messageContainer {
+  @media (--tablet) {
     padding-top: var(--spacing-300);
   }
 }
@@ -129,10 +113,8 @@
   letter-spacing: 0.32px;
   color: var(--color-neutral-0);
   margin: 0;
-}
 
-@media (--tablet) {
-  .title {
+  @media (--tablet) {
     font-size: 40px;
     line-height: 1.36;
     letter-spacing: 0.4px;
@@ -147,10 +129,8 @@
   letter-spacing: var(--letter-spacing-tight);
   color: var(--color-neutral-400);
   margin: 0;
-}
 
-@media (--tablet) {
-  .subtitle {
+  @media (--tablet) {
     font-size: var(--font-size-xl);
   }
 }
@@ -163,10 +143,8 @@
   width: 100%;
   padding: 0 0 var(--spacing-200);
   overflow: hidden;
-}
 
-@media (--tablet) {
-  .statsRow {
+  @media (--tablet) {
     flex-direction: row;
     gap: var(--spacing-250);
     padding: var(--spacing-250) 0 var(--spacing-400);
@@ -182,10 +160,8 @@
   border-radius: var(--radius-md);
   text-align: left;
   width: 100%;
-}
 
-@media (--tablet) {
-  .statCard {
+  @media (--tablet) {
     flex: 1;
     width: auto;
   }
